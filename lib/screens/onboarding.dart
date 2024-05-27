@@ -24,8 +24,8 @@ class _OnboardingState extends State<Onboarding> {
                 Row(
                   children: [
                     Container(
-                      width: 73,
-                      height: 73,
+                      width: 80,
+                      height: 80,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
@@ -42,7 +42,7 @@ class _OnboardingState extends State<Onboarding> {
                         "Food for Everyone",
                         style: TextStyle(
                             fontWeight: FontWeight.w800,
-                            fontSize: 50,
+                            fontSize: 45,
                             color: Colors.white),
                       ),
                     ),
@@ -52,7 +52,7 @@ class _OnboardingState extends State<Onboarding> {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 40,
           ),
           Container(
             height: 350,

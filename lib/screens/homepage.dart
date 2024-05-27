@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-var scaffoldkey = GlobalKey<ScaffoldState>();
+var scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
@@ -24,14 +24,14 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldkey,
+      key: scaffoldKey,
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xffF2F2F2),
       drawer: CustomDrawer(),
@@ -42,9 +42,10 @@ class _HomePageState extends State<HomePage>
         leading: Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: IconButton(
-              color: Colors.black,
-              icon: ImageIcon(AssetImage("lib/assets/drawer.png")),
-              onPressed: () => scaffoldkey.currentState?.openDrawer()), //
+            color: Colors.black,
+            icon: ImageIcon(AssetImage("lib/assets/drawer.png")),
+            onPressed: () => scaffoldKey.currentState?.openDrawer(),
+          ),
         ),
         actions: [
           Padding(
@@ -76,9 +77,7 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: SizedBox(
@@ -115,27 +114,15 @@ class _HomePageState extends State<HomePage>
                   isScrollable: true,
                   unselectedLabelColor: Colors.black,
                   labelColor: Color(0xffFA4A0C),
-                  labelStyle:
-                  TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
+                  labelStyle: TextStyle(fontSize: 17, fontWeight: FontWeight.w300),
                   tabs: [
                     Padding(
                       padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                      child: Tab(
-                        text: 'Foods',
-                      ),
+                      child: Tab(text: 'Foods'),
                     ),
-                    Tab(
-                      text: 'Drinks',
-                    ),
-                    Tab(
-                      text: 'Snacks',
-                    ),
-                    Tab(
-                      text: 'Sauces',
-                    ),
-                    Tab(
-                      text: 'Drinks',
-                    ),
+                    Tab(text: 'Drinks'),
+                    Tab(text: 'Snacks'),
+                    Tab(text: 'Sauces'),
                   ],
                   controller: _tabController,
                   indicatorSize: TabBarIndicatorSize.tab,
@@ -146,414 +133,94 @@ class _HomePageState extends State<HomePage>
             Expanded(
               child: TabBarView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 35.0),
-                    child: CarouselSlider.builder(
-                      itemCount: 4,
-                      itemBuilder: (context, index, realIndex) {
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DetailsPage(
-                                        selectedFood: foods[index])));
-                          },
-                          child: Stack(
-                            clipBehavior: Clip.none,
-                            children: [
-                              Container(
-                                height: 320,
-                                width: 220,
-                                child: Card(
-                                  elevation: 4.0,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.circular(30.0)),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 130,
-                                      ),
-                                      SizedBox(
-                                        width: 120,
-                                        child: Text(foodList[index].name,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 22)),
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 70,
-                                        child: Text(
-                                          r"$" +
-                                              foodList[index].price.toString(),
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Color(0xffFA4A0C),
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 17),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: -30,
-                                left: -12,
-                                child: Image(
-                                  image: AssetImage(foodList[index].imagepath),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                      options: CarouselOptions(
-                          height: 270.0,
-                          enableInfiniteScroll: false,
-                          autoPlay: false,
-                          initialPage: 0,
-                          enlargeCenterPage: false,
-                          viewportFraction: 0.7),
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: CarouselSlider.builder(
-                        itemCount: 4,
-                        itemBuilder: (context, index, realIndex) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DetailsPage(
-                                          selectedFood: foods[index])));
-                            },
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  height: 320,
-                                  width: 220,
-                                  child: Card(
-                                    elevation: 4.0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(30.0)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 130,
-                                        ),
-                                        SizedBox(
-                                          width: 120,
-                                          child: Text(foodList[index].name,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 22)),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        SizedBox(
-                                          width: 70,
-                                          child: Text(
-                                            r"$" +
-                                                foodList[index].price.toString(),
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Color(0xffFA4A0C),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 17),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: -30,
-                                  left: -12,
-                                  child: Image(
-                                    image: AssetImage(foodList[index].imagepath),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        options: CarouselOptions(
-                            height: 250.0,
-                            enableInfiniteScroll: false,
-                            autoPlay: false,
-                            initialPage: 0,
-                            enlargeCenterPage: false,
-                            viewportFraction: 0.7),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 30.0),
-                      child: CarouselSlider.builder(
-                        itemCount: 4,
-                        itemBuilder: (context, index, realIndex) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DetailsPage(
-                                          selectedFood: foods[index])));
-                            },
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  height: 320,
-                                  width: 220,
-                                  child: Card(
-                                    elevation: 4.0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(30.0)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 130,
-                                        ),
-                                        SizedBox(
-                                          width: 120,
-                                          child: Text(foodList[index].name,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 22)),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        SizedBox(
-                                          width: 70,
-                                          child: Text(
-                                            r"$" +
-                                                foodList[index].price.toString(),
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Color(0xffFA4A0C),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 17),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: -30,
-                                  left: -12,
-                                  child: Image(
-                                    image: AssetImage(foodList[index].imagepath),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        options: CarouselOptions(
-                            height: 270.0,
-                            enableInfiniteScroll: false,
-                            autoPlay: false,
-                            initialPage: 0,
-                            enlargeCenterPage: false,
-                            viewportFraction: 0.7),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 35.0),
-                      child: CarouselSlider.builder(
-                        itemCount: 4,
-                        itemBuilder: (context, index, realIndex) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DetailsPage(
-                                          selectedFood: foods[index])));
-                            },
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  height: 320,
-                                  width: 220,
-                                  child: Card(
-                                    elevation: 4.0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(30.0)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 130,
-                                        ),
-                                        SizedBox(
-                                          width: 120,
-                                          child: Text(foodList[index].name,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 22)),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        SizedBox(
-                                          width: 70,
-                                          child: Text(
-                                            r"$" +
-                                                foodList[index].price.toString(),
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Color(0xffFA4A0C),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 17),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: -30,
-                                  left: -12,
-                                  child: Image(
-                                    image: AssetImage(foodList[index].imagepath),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        options: CarouselOptions(
-                            height: 270.0,
-                            enableInfiniteScroll: false,
-                            autoPlay: false,
-                            initialPage: 0,
-                            enlargeCenterPage: false,
-                            viewportFraction: 0.7),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 35.0),
-                      child: CarouselSlider.builder(
-                        itemCount: 4,
-                        itemBuilder: (context, index, realIndex) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DetailsPage(
-                                          selectedFood: foods[index])));
-                            },
-                            child: Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  height: 320,
-                                  width: 220,
-                                  child: Card(
-                                    elevation: 4.0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(30.0)),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 130,
-                                        ),
-                                        SizedBox(
-                                          width: 120,
-                                          child: Text(foodList[index].name,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 22)),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        SizedBox(
-                                          width: 70,
-                                          child: Text(
-                                            r"$" +
-                                                foodList[index].price.toString(),
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Color(0xffFA4A0C),
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 17),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: -30,
-                                  left: -12,
-                                  child: Image(
-                                    image: AssetImage(foodList[index].imagepath),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                        options: CarouselOptions(
-                            height: 270.0,
-                            enableInfiniteScroll: false,
-                            autoPlay: false,
-                            initialPage: 0,
-                            enlargeCenterPage: false,
-                            viewportFraction: 0.7),
-                      ),
-                    ),
-                  ),
+                  buildCarouselSlider(foods),
+                  buildCarouselSlider(Utils.getMockedDrinks()),
+                  buildCarouselSlider(Utils.getMockedSnacks()),
+                  buildCarouselSlider(Utils.getMockedSauces()),
                 ],
                 controller: _tabController,
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildCarouselSlider(List<Food> items) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 35.0),
+      child: CarouselSlider.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index, realIndex) {
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsPage(selectedFood: items[index]),
+                ),
+              );
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  height: 300,
+                  width: 220,
+                  child: Card(
+                    elevation: 4.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 130),
+                        SizedBox(
+                          width: 120,
+                          child: Text(
+                            items[index].name,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 22),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        SizedBox(
+                          width: 70,
+                          child: Text(
+                            r"$" + items[index].price.toString(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Color(0xffFA4A0C),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: -30,
+                  left: -12,
+                  child: Image(
+                    image: AssetImage(items[index].imagepath),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+        options: CarouselOptions(
+          height: 270.0,
+          enableInfiniteScroll: false,
+          autoPlay: false,
+          initialPage: 0,
+          enlargeCenterPage: false,
+          viewportFraction: 0.7,
         ),
       ),
     );

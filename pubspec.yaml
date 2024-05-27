@@ -74,49 +74,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/appicon.png
-    - lib/assets/onboarding_image1.png
-    - lib/assets/onboarding_image2.png
-    - lib/assets/Food.png
-    - lib/assets/drawer.png
-    - lib/assets/shopping-cart.png
-    - lib/assets/bottomnavbaritem_1.png
-    - lib/assets/bottomnavbaritem_2.png
-    - lib/assets/bottomnavbaritem_3.png
-    - lib/assets/bottomnavbaritem_4.png
-    - lib/assets/searchicon.png
-    - lib/assets/maskgroup_1.png
-    - lib/assets/maskgroup_2.png
-    - lib/assets/maskgroup_3.png
-    - lib/assets/maskgroup_4.png
-    - lib/assets/detailimage_1.png
-    - lib/assets/detailimage_2.png
-    - lib/assets/detailimage_3.png
-    - lib/assets/detailimage_4.png
-    - lib/assets/appbar_back.png
-    - lib/assets/appbar_back2.png
-    - lib/assets/appbar_favourite.png
-    - lib/assets/detailpagedots.png
-    - lib/assets/myimage.png
-    - lib/assets/-.png
-    - lib/assets/+.png
-    - lib/assets/notfav_icon.png
-    - lib/assets/fav_icon.png
-    - lib/assets/drawer_design1.png
-    - lib/assets/drawer_design1_shadow.png
-    - lib/assets/drawer_icon1.png
-    - lib/assets/drawer_icon2.png
-    - lib/assets/drawer_icon3.png
-    - lib/assets/drawer_icon4.png
-    - lib/assets/drawer_icon5.png
-    - lib/assets/signoutarrow.png
-    - lib/assets/history.png
-    - lib/assets/profilepicture.png
-    - lib/assets/profile_cardicon.png
-    - lib/assets/profile_bankicon.png
-    - lib/assets/profile_paypalicon.png
-    - lib/assets/swipeitem.png
-    - lib/assets/favicon.png
+
+
+    - lib/assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

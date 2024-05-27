@@ -93,6 +93,11 @@ class _FavouritesState extends State<Favourites> {
                               favouritesList[index].faved = false;
                               deleteFromDatabase(
                                   database, favouritesList[index]);
+                              Navigator.pop(context); // Pop the current route from the stack
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Home())
+                              );
                             },
                           ),
                         ], motion: ScrollMotion()),
